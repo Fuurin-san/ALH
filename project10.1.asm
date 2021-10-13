@@ -32,29 +32,29 @@ show_str:
         mov al,00a0h
         mul dh
         add ax,bx
-        mov bx,ax
+        mov bx,ax       ;定位显示缓冲区的行地址
 
-        mov dh,cl
+        mov dh,cl       ;降代表颜色的值写入dx寄存器的高位
 
 input:  
         mov cl,ds:[bx]
-        mov ch,0
+        mov ch,0        ;将data段数据读入cx，用于jcxz判断是否结束循环
         jcxz ok
 
-        mov dl,ds:[si]
-        mov es:[bx],dx
+        mov dl,ds:[si]  ;将字符的ASCII码写入dx的低位
+        mov es:[bx],dx  ;将dx中代表字符的低位与代表颜色的高位一并写入目标显存缓冲区
 
-        inc si
-        add bx,2
+        inc si          ;si每轮+1，指向data段下一个字符
+        add bx,2        ;bx每次+2，指向显示缓冲区下一个写入数据的位置
 
-        jmp short input
+        jmp short input 
 
 
 ok:     
         pop cx
         pop si
         pop dx
-        ret
+        ret             ;返回
 
 code ends
 end start
