@@ -37,7 +37,7 @@ show_str:
         mov dh,cl       ;降代表颜色的值写入dx寄存器的高位
 
 input:  
-        mov cl,ds:[bx]
+        mov cl,ds:[si]
         mov ch,0        ;将data段数据读入cx，用于jcxz判断是否结束循环
         jcxz ok
 
