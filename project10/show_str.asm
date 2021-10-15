@@ -18,10 +18,6 @@ start:  mov dh,8
         int 21h
 
 show_str:
-        push dx
-        push si
-        push cx
-
         mov ax,0b800h
         mov es,ax       ;定位显示缓冲区的段地址
 
@@ -51,9 +47,6 @@ input:
 
 
 Outinput:     
-        pop cx
-        pop si
-        pop dx
         ret             ;返回
 
 code ends
