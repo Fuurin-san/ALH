@@ -39,7 +39,7 @@ show_str:
 input:  
         mov cl,ds:[si]
         mov ch,0        ;将data段数据读入cx，用于jcxz判断是否结束循环
-        jcxz ok
+        jcxz Outinput
 
         mov dl,ds:[si]  ;将字符的ASCII码写入dx的低位
         mov es:[bx],dx  ;将dx中代表字符的低位与代表颜色的高位一并写入目标显存缓冲区
@@ -50,7 +50,7 @@ input:
         jmp short input 
 
 
-ok:     
+Outinput:     
         pop cx
         pop si
         pop dx

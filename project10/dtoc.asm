@@ -34,13 +34,13 @@ dtoc:
         jmp short dtoc
 
 outdtoc:
-s1:     
+dtoc_s:     
         
         mov cx,di       ;先将字符数量交给cx，用于判断循环次数
         dec di
         pop ds:[si]
         inc si
-        loop s1
+        loop dtoc_s
         mov byte ptr ds:[si],0   ;多输出一个0，用于之后的show_str程序跳出循环
 
         ret
