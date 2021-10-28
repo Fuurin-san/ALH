@@ -19,11 +19,6 @@ start:
         mov word ptr es:[7ch*4+2],0
         sti
 
-        ;mov ax,0                        ;简单的测试程序
-        ;mov ah,3
-        ;mov al,2
-        ;int 7ch
-
         mov ax,4c00h
         int 21h
 
